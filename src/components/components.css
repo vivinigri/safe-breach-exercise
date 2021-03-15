@@ -1,0 +1,66 @@
+.card {
+  height: auto;
+	width: 80%;
+	background-color: #011627;
+  border: 2px solid #61dafb;
+  border-radius: 16px;
+  margin: 10px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  margin: 20px;
+}
+
+.detailsSpan {
+  color: #ADDB67;
+}
+
+.details {
+  font-size: 0.6em;
+  text-align: left;
+}
+
+.icon {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: white;
+  font-size: 0.7em;
+  margin: 0;
+  cursor: pointer;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.input {
+  width: 80%;
+  font-size: 0.7em;
+  color: #7FDBCA;
+  background-color: #011627;
+  border-color: #C792EA;
+  border-radius: 10;
+  border-width: 3;
+}
+
+.error {
+  border-color: #FF2C83;
+}
