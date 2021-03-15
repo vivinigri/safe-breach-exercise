@@ -23,4 +23,6 @@ You'll be implementing a "Yellow Pages" web application. The application consist
 
 * Query validation and error feedback
 
+* Simulate pagination adding limit to contact's display
+
 * EXTRA: ability to edit and delete contacts from the list
