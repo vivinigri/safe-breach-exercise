@@ -6,10 +6,13 @@ import { Formik, Form, Field } from "formik"
 import ContactDisplay from "./components/ContactDisplay"
 import ContactEdit from "./components/ContactEdit"
 
+const BASE_LIMIT = 5
+
 function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [editingId, setEditingId] = useState(null)
   const [payload, setPayload] = useState()
+  const [limit, setLimit] = useState(BASE_LIMIT)
 
   const contacts = useSelector((state) => state.yellowPages.contacts)
   const error = useSelector((state) => state.yellowPages.error)
@@ -36,6 +39,7 @@ function App() {
   }
 
   const searchContact = async (query) => {
+    setLimit(BASE_LIMIT)
     setIsLoading(true)
     setPayload(query)
     await dispatch.yellowPages.fetchContacts(query)
@@ -130,14 +134,29 @@ function App() {
               />
             ))
         ) : (
-          contacts.map((contact, index) => (
-            <ContactDisplay
-              key={index}
-              contact={contact}
-              removeContact={removeContact}
-              editContact={(id) => setEditingId(id)}
-            />
-          ))
+          contacts.map((contact, index) => {
+            if (index < limit) {
+              return (
+                <ContactDisplay
+                  key={index}
+                  contact={contact}
+                  removeContact={removeContact}
+                  editContact={(id) => setEditingId(id)}
+                />
+              )
+            }
+          })
+        )}
+        {!isLoading && contacts.length > limit - 1 && (
+          <>
+            <p>{`Showing ${limit} of ${contacts.length} results`}</p>
+            <p
+              className="loadMore"
+              onClick={() => setLimit(limit + BASE_LIMIT)}
+            >
+              Load More
+            </p>
+          </>
         )}
       </header>
     </div>

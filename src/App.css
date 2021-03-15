@@ -84,3 +84,9 @@
   font-size: 0.7em;
 }
 
+.loadMore {
+  color: #ADDB67;
+  text-decoration: underline;
+  cursor: pointer;     
+}
+
